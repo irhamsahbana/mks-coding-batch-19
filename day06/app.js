@@ -4,6 +4,10 @@ const port = 3000;
 
 app.set("view engine", "ejs");
 
+app.get('/contoh-bootstrap', function(req, res) {
+  res.render('pages/page-01');
+});
+
 app.get('/contoh-pertama', function(req, res) {
   let data = {
     name: "Rizky",
