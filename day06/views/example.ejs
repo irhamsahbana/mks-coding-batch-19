@@ -7,16 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Contoh 1</h1>
+    <h1>Contoh</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti doloribus sequi amet, excepturi autem aliquid?</p>
     <p>Hallo <%= name %></p>
     <p>Lahir pada <%= yearOfBirth %></p>
+
     <p>Hobi:</p>
     <ul>
         <% hobbies.forEach(element => { %>
             <li><%= element%></li>
         <% }) %>
     </ul>
+
     <p>Status kelulusan:
         <% if (isGraduate) { %>
             Sudah lulus

@@ -4,11 +4,7 @@ const port = 3000;
 
 app.set("view engine", "ejs");
 
-app.get('/contoh-bootstrap', function(req, res) {
-  res.render('pages/page-01');
-});
-
-app.get('/contoh-pertama', function(req, res) {
+app.get('/example', function(req, res) {
   let data = {
     name: "Rizky",
     yearOfBirth: 1998,
@@ -20,13 +16,25 @@ app.get('/contoh-pertama', function(req, res) {
     isGraduate: true
   }
 
-  res.render('contoh1', data);
+  res.render('example', data);
 });
 
-app.get('/contoh-kedua', function(req, res) {
-  res.render('anak-folder/contoh2');
+app.get('/partial-example', function(req, res) {
+  let data = {
+    title: "Contoh Bootstrap",
+    name: "Rizky",
+    yearOfBirth: 1998,
+    hobbies: [
+      "sport",
+      "reading",
+      "drink coffee"
+    ],
+    isGraduate: true
+  }
+
+  res.render('pages/page-01', data);
 });
 
 app.listen(port, function(){
-  console.log(`Example app listening on port http://localhost:${port}!`);
+  console.log(`Example app listening on port http://localhost:${port}`);
 });
