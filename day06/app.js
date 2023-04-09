@@ -35,6 +35,10 @@ app.get('/partial-example', function(req, res) {
   res.render('pages/page-01', data);
 });
 
+app.get('/users/:userId/books/:bookId', function(req, res) {
+  res.send(req.params);
+});
+
 app.listen(port, function(){
   console.log(`Example app listening on port http://localhost:${port}`);
 });
