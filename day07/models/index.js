@@ -7,6 +7,21 @@ async function addContact(data) {
   return docRef.id;
 }
 
+async function getContactList() {
+  const snapshot = await contactListCollection.get();
+
+  const contactList = [];
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    data.id = doc.id;
+    contactList.push(data);
+  })
+
+  return contactList;
+}
+
 module.exports = {
   addContact,
+  getContactList,
 };

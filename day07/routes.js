@@ -4,7 +4,16 @@ const models = require('./models/index');
 // admin
 
 route.get('/admin/contact-list', async function(req, res) {
-  res.render('pages_admin/contacts.ejs');
+  try {
+    const contactList = await models.getContactList();
+    const data = {
+      contactList: contactList,
+    };
+
+    res.render('pages_admin/contacts.ejs', data);
+  } catch(error) {
+    res.send("error");
+  }
 });
 
 route.get('/', async function(req, res) {

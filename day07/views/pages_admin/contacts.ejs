@@ -35,37 +35,21 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Pesan</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>Trident</td>
-                <td>AOL browser (AOL desktop)</td>
-                <td>Win XP</td>
-                <td>6</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td>Tasman</td>
-                <td>Internet Explorer 5.1</td>
-                <td>Mac OS 7.6-9</td>
-                <td>1</td>
-                <td>C</td>
-              </tr>
-              </tbody>
-              <tfoot>
-              <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-              </tr>
+                <% contactList.forEach(element => { %>
+                  <tr>
+                    <td><%= element.id %></td>
+                    <td><%= element.nama %></td>
+                    <td><%= element.email %></td>
+                    <td><%= element.pesan %></td>
+                  </tr>
+                <% }) %>
               </tfoot>
             </table>
           </div>
