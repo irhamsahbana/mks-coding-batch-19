@@ -21,7 +21,14 @@ async function getContactList() {
   return contactList;
 }
 
+async function deleteContact(id) {
+  const docRef = await contactListCollection.doc(id).delete();
+
+  return docRef.id;
+}
+
 module.exports = {
   addContact,
   getContactList,
+  deleteContact,
 };

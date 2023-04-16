@@ -12,7 +12,18 @@ route.get('/admin/contact-list', async function(req, res) {
 
     res.render('pages_admin/contacts.ejs', data);
   } catch(error) {
-    res.send("error");
+    res.send(error);
+  }
+});
+
+route.post('/admin/contact-list/:id/delete', async function(req, res) {
+  const id = req.params.id;
+
+  try {
+    await models.deleteContact(id);
+    res.redirect('/admin/contact-list');
+  } catch (error) {
+    res.send(error);
   }
 });
 
