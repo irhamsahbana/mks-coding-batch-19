@@ -27,6 +27,23 @@ route.post('/admin/contact-list/:id/delete', async function(req, res) {
   }
 });
 
+route.get('/admin/contact-list/:id/edit', async function(req, res) {
+  const id = req.params.id;
+
+  try {
+    const contactFromDB = await models.getContactById(id);
+    const data = {
+      contact: contactFromDB,
+    };
+
+    res.send(data);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+// public
+
 route.get('/', async function(req, res) {
   res.render('pages/home.ejs');
 });
