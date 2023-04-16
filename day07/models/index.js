@@ -30,7 +30,16 @@ async function deleteContact(id) {
 async function getContactById(id) {
   const docRef = await contactListCollection.doc(id).get();
 
-  return docRef.data();
+  let data = docRef.data();
+  data.id = docRef.id;
+
+  return data;
+}
+
+async function updateContact(id, data) {
+  const docRef = await contactListCollection.doc(id).update(data);
+
+  return docRef.id;
 }
 
 module.exports = {
@@ -38,4 +47,5 @@ module.exports = {
   getContactList,
   deleteContact,
   getContactById,
+  updateContact
 };

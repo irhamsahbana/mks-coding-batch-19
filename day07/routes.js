@@ -2,7 +2,6 @@ const route = require('express').Router();
 const models = require('./models/index');
 
 // admin
-
 route.get('/admin/contact-list', async function(req, res) {
   try {
     const contactList = await models.getContactList();
@@ -36,14 +35,32 @@ route.get('/admin/contact-list/:id/edit', async function(req, res) {
       contact: contactFromDB,
     };
 
-    res.send(data);
+    res.render('pages_admin/contact_edit.ejs', data);
   } catch (error) {
     res.send(error);
   }
 });
 
-// public
+route.post('/admin/contact-list/:id/edit', async function(req, res) {
+  const id = req.params.id;
+  const { name, email, message } = req.body;
 
+  const data = {
+    nama: name,
+    email: email,
+    pesan: message,
+  };
+
+  try {
+    await models.updateContact(id, data);
+    res.redirect('/admin/contact-list');
+  } catch (error) {
+    res.send(error);
+  }
+});
+// end admin
+
+// public
 route.get('/', async function(req, res) {
   res.render('pages/home.ejs');
 });
@@ -78,5 +95,6 @@ route.post('/contact', async function(req, res) {
     res.send(error);
   }
 });
+// end public
 
 module.exports = route;
