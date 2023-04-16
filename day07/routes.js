@@ -1,6 +1,12 @@
 const route = require('express').Router();
 const models = require('./models/index');
 
+// admin
+
+route.get('/admin/contact-list', async function(req, res) {
+  res.render('pages_admin/contacts.ejs');
+});
+
 route.get('/', async function(req, res) {
   res.render('pages/home.ejs');
 });
@@ -11,6 +17,10 @@ route.get('/about', async function(req, res) {
 
 route.get('/contact', async function(req, res) {
   res.render('pages/contact.ejs');
+});
+
+route.get('/admin-dashboard', async function(req, res) {
+  res.render('pages_admin/dashboard.ejs');
 });
 
 route.post('/contact', async function(req, res) {
